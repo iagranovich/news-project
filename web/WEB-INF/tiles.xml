@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+   "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+   "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+   
+<tiles-definitions>
+    <definition  name="template_admin"
+        template="/WEB-INF/jsp/template_admin.jsp">  <!--  Общий  шаблон  -->    
+        <put-attribute name="title" value=""/> 
+        <put-attribute name="menu" value="/WEB-INF/jsp/menu.jsp"/> 
+        <put-attribute name="content" value=""/>          
+    </definition>
+    
+    <definition  name="template_user"
+        template="/WEB-INF/jsp/template_user.jsp">  <!--  Общий  шаблон  -->    
+        <put-attribute name="title" value=""/>         
+        <put-attribute name="content" value=""/>          
+    </definition>
+    
+    <definition name="articles" extends="template_admin">
+        <put-attribute name="title" value="Articles"/> 
+        <put-attribute name="content" value="/WEB-INF/jsp/articles.jsp"/>
+    </definition>
+    
+    <definition name="admin" extends="template_admin">
+        <put-attribute name="title" value="Admin"/> 
+        <put-attribute name="content" value="/WEB-INF/jsp/admin.jsp"/>
+    </definition>
+    
+     <definition name="add" extends="template_admin"> 
+        <put-attribute name="title" value="Add"/> 
+        <put-attribute name="content" value="/WEB-INF/jsp/update.jsp"/>        
+    </definition>
+    
+    <definition name="entry" extends="template_user"> 
+        <put-attribute name="title" value="Entry"/> 
+        <put-attribute name="content" value="/WEB-INF/jsp/entry.jsp"/>
+    </definition>
+    
+    <definition name="main" extends="template_user">
+        <put-attribute name="title" value="Main"/> 
+        <put-attribute name="content" value="/WEB-INF/jsp/main.jsp"/>
+    </definition>
+    
+     <definition name="edit" extends="template_admin">
+        <put-attribute name="title" value="Edit"/> 
+        <put-attribute name="content" value="/WEB-INF/jsp/update.jsp"/>        
+    </definition>
+</tiles-definitions>
