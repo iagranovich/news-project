@@ -6,13 +6,28 @@
 package controller;
 
 import entity.Article;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import org.apache.commons.io.IOUtils;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
 import service.ArticleService;
 
 /**
@@ -27,19 +42,34 @@ public class MainController {
     ArticleService articleService;    
     
     @RequestMapping(value="/main")
-    public String Main(Model model){
+    public String main(Model model){
         model.addAttribute("articles", articleService.findAll());
         return "main";
     }
     
-//    @RequestMapping("/articles/{slug}")
-//    public String Slug(@PathVariable("slug") String slug, Model model){
-//        model.addAttribute("entry", articleService.getBySlug(slug));
-//        return "entry";
-//    }
+    @RequestMapping("/articles/{title}")
+    public ResponseEntity<String> slug(@PathVariable("title") String title) throws IOException, URISyntaxException{
+        Article article = articleService.findByTitle(title);
+        
+        //news scraping        
+        String url = article.getUrl();
+        HttpGet request = new HttpGet(url);
+        HttpClient httpClient = new DefaultHttpClient();
+        HttpResponse response = httpClient.execute(request);
+        HttpEntity entity;
+        entity = response.getEntity();        
+        String encoding =  EntityUtils.getContentCharSet(entity);
+        String mime = EntityUtils.getContentMimeType(entity);
+        String responseText =  IOUtils.toString(entity.getContent(), encoding);//получаем html страницы - можно проще?
+        
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.add("Content-Type", mime + "; charset=" + encoding);
+        
+        return new ResponseEntity<>(responseText, responseHeaders, HttpStatus.OK);        
+    }
     
     @RequestMapping(value="/admin")
-    public String admin(){
+    public String admin() {        
         return "admin";
     }
     

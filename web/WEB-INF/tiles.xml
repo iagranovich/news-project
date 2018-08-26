@@ -15,7 +15,7 @@
         template="/WEB-INF/jsp/template_user.jsp">  <!--  Общий  шаблон  -->    
         <put-attribute name="title" value=""/>         
         <put-attribute name="content" value=""/>          
-    </definition>
+    </definition>   
     
     <definition name="articles" extends="template_admin">
         <put-attribute name="title" value="Articles"/> 

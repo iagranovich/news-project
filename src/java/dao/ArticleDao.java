@@ -34,10 +34,10 @@ public class ArticleDao {
         return jdbcTemplate.queryForObject(sql, new ArticleMapper(), id);
     }    
         
-//    public Article getBySlug(String slug){
-//        String sql = "SELECT * FROM table1 WHERE slug=?";
-//        return jdbcTemplate.queryForObject(sql, new ArticleMapper(), slug);
-//    }
+    public Article findByTitle(String title){
+        String sql = "SELECT * FROM articles WHERE title=?";
+        return jdbcTemplate.queryForObject(sql, new ArticleMapper(), title);
+    }
     
     public void add(Article art){
         String sql ="INSERT INTO articles (author,title,description,url,image,category) VALUES (?,?,?,?,?,?)";

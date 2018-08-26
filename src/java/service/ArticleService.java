@@ -27,13 +27,13 @@ public class ArticleService {
         return tableOneDao.findById(id);
     }
     
-    public void addArticle(Article art){
-        tableOneDao.add(art);
+    public Article findByTitle(String title){
+        return tableOneDao.findByTitle(title);
     }
     
-//    public Article getBySlug(String slug){
-//        return tableOneDao.getBySlug(slug);
-//    }
+    public void addArticle(Article art){
+        tableOneDao.add(art);
+    }    
     
     public void deleteArticle(int id){
         tableOneDao.delete(id);
