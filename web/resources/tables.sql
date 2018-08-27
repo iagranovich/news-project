@@ -14,7 +14,7 @@ DROP TABLE IF EXISTS items;
 CREATE TABLE IF NOT EXISTS articles (
   id INT(11) NOT NULL AUTO_INCREMENT,
   date DATE,
-  author VARCHAR(50),
+  author VARCHAR(100),
   title VARCHAR(250),  
   description VARCHAR(5000),
   url VARCHAR (250) NOT NULL,

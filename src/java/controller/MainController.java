@@ -41,7 +41,7 @@ public class MainController {
     @Autowired
     ArticleService articleService;    
     
-    @RequestMapping(value="/main")
+    @RequestMapping(value={"/main", "/"})
     public String main(Model model){
         model.addAttribute("articles", articleService.findAll());
         return "main";
