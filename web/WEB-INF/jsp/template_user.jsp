@@ -21,9 +21,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav mx-auto">
-                    <a class="nav-item nav-link active" href="${pageContext.request.contextPath}/category/blockchain">Blockchain</a>
-                    <a class="nav-item nav-link active" href="${pageContext.request.contextPath}/category/android">Android</a>
-                    <a class="nav-item nav-link active" href="${pageContext.request.contextPath}/category/ios">iOS</a>
+                    <a class="nav-item nav-link active" href="${pageContext.request.contextPath}/categories/blockchain">Blockchain</a>
+                    <a class="nav-item nav-link active" href="${pageContext.request.contextPath}/categories/android">Android</a>
+                    <a class="nav-item nav-link active" href="${pageContext.request.contextPath}/categories/ios">iOS</a>
                 </div>
             </div>
         </nav>

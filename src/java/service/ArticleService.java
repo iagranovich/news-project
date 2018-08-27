@@ -79,6 +79,10 @@ public class ArticleService {
         return articleDao.findByTitle(title);
     }
     
+    public List<Article> findByCategory(String category){
+        return articleDao.findByCategory(category);
+    }
+    
     public void addArticle(Article art){
         articleDao.add(art);
     }    

@@ -39,6 +39,11 @@ public class ArticleDao {
         return jdbcTemplate.queryForObject(sql, new ArticleMapper(), title);
     }
     
+    public List<Article> findByCategory(String category){
+        String sql = "SELECT * FROM articles WHERE category=?";
+        return jdbcTemplate.query(sql, new ArticleMapper(), category);
+    }
+    
     public void add(Article art){
         String sql ="INSERT INTO articles (author,title,description,url,image,category) VALUES (?,?,?,?,?,?)";
         jdbcTemplate.update(sql, art.getAuthor(), art.getTitle(), art.getDescription(), art.getUrl(), art.getImage(), art.getCategory());

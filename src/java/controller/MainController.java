@@ -47,6 +47,12 @@ public class MainController {
         return "main";
     }
     
+    @RequestMapping("/categories/{category}")
+    public String category(Model model, @PathVariable("category") String category) {
+        model.addAttribute("articles", articleService.findByCategory(category));        
+        return "main";
+    }
+    
     @RequestMapping("/articles/{title}")
     public ResponseEntity<String> slug(@PathVariable("title") String title) throws IOException, URISyntaxException{
         Article article = articleService.findByTitle(title);
@@ -67,7 +73,7 @@ public class MainController {
         
         return new ResponseEntity<>(responseText, responseHeaders, HttpStatus.OK);        
     }
-    
+        
     @RequestMapping(value="/parse")
     public ResponseEntity<String> parse() {
         articleService.saveFromNewsApi();
