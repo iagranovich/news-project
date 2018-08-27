@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS articles (
   title VARCHAR(250),  
   description VARCHAR(5000),
   url VARCHAR (250) NOT NULL,
-  image VARCHAR (250),
+  image VARCHAR (1000),
   category VARCHAR(50) NOT NULL,
   
   PRIMARY KEY (id),

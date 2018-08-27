@@ -68,6 +68,12 @@ public class MainController {
         return new ResponseEntity<>(responseText, responseHeaders, HttpStatus.OK);        
     }
     
+    @RequestMapping(value="/parse")
+    public ResponseEntity<String> parse() {
+        articleService.saveFromNewsApi();
+        return new ResponseEntity<>("", HttpStatus.OK);
+    }
+    
     @RequestMapping(value="/admin")
     public String admin() {        
         return "admin";

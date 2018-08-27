@@ -48,7 +48,7 @@ public class ProjOneConfig {
     }
     
     @Bean
-    public ArticleDao tableOneDao(){
+    public ArticleDao articleDao(){
         return new ArticleDao(jdbcTemplate());
     }
 }
