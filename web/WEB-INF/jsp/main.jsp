@@ -1,8 +1,16 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<c:forEach var="article" items="${articles}">
-    <h2>
-        <a href="/news-project/articles/${article.title}.htm"><c:out value="${article.title}"/></a><br>
-    </h2>    
-</c:forEach>
+<div class="card-columns">
+    <c:forEach var="article" items="${articles}">
+        <div class="card">
+            <a href="${pageContext.request.contextPath}/articles/${article.title}" class="card-link">
+                <img class="card-img-top" src="${article.image}" alt="Card image cap">
+            </a>
+            <div class="card-body">
+              <h5 class="card-title">${article.title}</h5>
+              <p class="card-text">${article.description}</p>
+            </div>
+        </div>
+    </c:forEach>
+</div>

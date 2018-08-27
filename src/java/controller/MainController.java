@@ -93,7 +93,7 @@ public class MainController {
             articleService.updateArticle(art);
         }
         
-        return "redirect:/admin/articles.htm";
+        return "redirect:/admin/articles";
     }
     
     @RequestMapping(value="/admin/articles/add")
@@ -105,7 +105,7 @@ public class MainController {
     @RequestMapping(value="/admin/articles/delete/{id}")
     public String delete(@PathVariable("id") int id){
         articleService.deleteArticle(id);
-        return "redirect:/admin/articles.htm";
+        return "redirect:/admin/articles";
     }
     
     @RequestMapping("/admin/articles/edit/{id}")
