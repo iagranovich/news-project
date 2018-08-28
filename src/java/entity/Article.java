@@ -34,7 +34,8 @@ public class Article {
     @JsonProperty("publishedAt")
     private Date date;
     
-    private String category;    
+    private String category;  
+    private String slug;
     
     
     public Article(){ }
@@ -101,6 +102,14 @@ public class Article {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+    
+    public String getSlug() {
+        return slug;
+    }
+
+    public void setSlug(String slug) {
+        this.slug = slug;
     }
     
 }

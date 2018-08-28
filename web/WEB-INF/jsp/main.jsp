@@ -4,7 +4,7 @@
 <div class="card-columns">
     <c:forEach var="article" items="${articles}">
         <div class="card">
-            <a href="${pageContext.request.contextPath}/articles/${article.title}" class="card-link">
+            <a href="${pageContext.request.contextPath}/articles/${article.slug}" class="card-link">
                 <img class="card-img-top" src="${article.image}" alt="Card image cap">
             </a>
             <div class="card-body">

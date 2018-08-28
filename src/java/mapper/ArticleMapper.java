@@ -27,6 +27,7 @@ public class ArticleMapper implements RowMapper<Article>{
         entry.setImage(rs.getString("image"));
         entry.setDate(rs.getDate("date"));
         entry.setCategory(rs.getString("category"));
+        entry.setSlug(rs.getString("slug"));
         return entry;
     }
     

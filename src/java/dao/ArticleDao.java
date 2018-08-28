@@ -34,9 +34,9 @@ public class ArticleDao {
         return jdbcTemplate.queryForObject(sql, new ArticleMapper(), id);
     }    
         
-    public Article findByTitle(String title){
-        String sql = "SELECT * FROM articles WHERE title=?";
-        return jdbcTemplate.queryForObject(sql, new ArticleMapper(), title);
+    public Article findBySlug(String slug){
+        String sql = "SELECT * FROM articles WHERE slug=?";
+        return jdbcTemplate.queryForObject(sql, new ArticleMapper(), slug);
     }
     
     public List<Article> findByCategory(String category){
@@ -45,8 +45,8 @@ public class ArticleDao {
     }
     
     public void add(Article art){
-        String sql ="INSERT INTO articles (author,title,description,url,image,category) VALUES (?,?,?,?,?,?)";
-        jdbcTemplate.update(sql, art.getAuthor(), art.getTitle(), art.getDescription(), art.getUrl(), art.getImage(), art.getCategory());
+        String sql ="INSERT INTO articles (author,title,description,url,image,category,slug) VALUES (?,?,?,?,?,?,?)";
+        jdbcTemplate.update(sql, art.getAuthor(), art.getTitle(), art.getDescription(), art.getUrl(), art.getImage(), art.getCategory(), art.getSlug());
     }
         
     public void delete(int id){

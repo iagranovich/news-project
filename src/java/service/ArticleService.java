@@ -8,6 +8,7 @@ package service;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.slugify.Slugify;
 import dao.ArticleDao;
 import entity.Article;
 import java.net.URL;
@@ -46,7 +47,11 @@ public class ArticleService {
         List<String> titles = new ArrayList<>();
         for(Map.Entry category : CATEGORIES.entrySet()){
             articles = getFromNewsApi(category.getValue().toString());
-            articles.forEach(article -> article.setCategory(category.getKey().toString()));
+            Slugify slg = new Slugify();
+            articles.forEach(article -> {
+                article.setCategory(category.getKey().toString());
+                article.setSlug(slg.slugify(article.getTitle()));
+            });
             titles = findAll().stream().map(Article::getTitle).collect(Collectors.toList());
             for (Article article : articles){
                 if(!titles.contains(article.getTitle())){
@@ -79,8 +84,8 @@ public class ArticleService {
         return articleDao.findById(id);
     }
     
-    public Article findByTitle(String title){
-        return articleDao.findByTitle(title);
+    public Article findBySlug(String slug){
+        return articleDao.findBySlug(slug);
     }
     
     public List<Article> findByCategory(String category){

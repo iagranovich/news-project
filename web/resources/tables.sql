@@ -20,6 +20,7 @@ CREATE TABLE IF NOT EXISTS articles (
   url VARCHAR (250) NOT NULL,
   image VARCHAR (1000),
   category VARCHAR(50) NOT NULL,
+  slug VARCHAR(250) NOT NULL,
   
   PRIMARY KEY (id),
   UNIQUE KEY art_id_uindex (id)    

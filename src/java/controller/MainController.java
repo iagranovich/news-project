@@ -53,9 +53,9 @@ public class MainController {
         return "main";
     }
     
-    @RequestMapping("/articles/{title}")
-    public ResponseEntity<String> slug(@PathVariable("title") String title) throws IOException, URISyntaxException{
-        Article article = articleService.findByTitle(title);
+    @RequestMapping("/articles/{slug}")
+    public ResponseEntity<String> slug(@PathVariable("slug") String slug) throws IOException, URISyntaxException{
+        Article article = articleService.findBySlug(slug);
         
         //news scraping        
         String url = article.getUrl();
